@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,6 +24,7 @@ import com.internship.products.repositories.products.ProductRepository;
  * @author Tsvetelin
  *
  */
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping ( path = "/products" , produces = "application/json" )
 public class ProductsController
@@ -58,7 +60,9 @@ public class ProductsController
             @RequestParam double price
     )
     {
-        return prodRepo.save( new ProductEntity(name , description , price) );
+        ProductEntity entity = new ProductEntity(name , description , price);
+        log.info( "Saving entity: " + entity );
+        return prodRepo.save( entity );
     }
 
     @DeleteMapping ( path = "/delete" )
@@ -76,5 +80,14 @@ public class ProductsController
         log.info( "Deleting id= " + id );
         prodRepo.deleteById( id );
     }
+    
+    @PostMapping( path = "/update" )
+    @ResponseBody
+    public void update( @RequestParam ProductEntity prod )
+    {
+        log.info( "Saving new: " + prod );
+        prodRepo.save( prod );
+    }
+    
 
 }

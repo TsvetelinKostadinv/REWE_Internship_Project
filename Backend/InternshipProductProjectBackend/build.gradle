@@ -2,13 +2,18 @@ plugins {
 	id 'org.asciidoctor.convert' version '1.5.3'
 	id 'org.springframework.boot' version '2.2.0.M3'
 	id 'java'
+	id 'application'
 }
 
 apply plugin: 'io.spring.dependency-management'
 
 group = 'com.internship.products'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+version = 'v1.0'
+sourceCompatibility = '8'
+
+application {
+    mainClassName = 'com.internship.products.InternshipProductProjectBackendApplication'
+}
 
 repositories {
 	mavenCentral()
