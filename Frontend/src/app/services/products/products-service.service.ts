@@ -37,10 +37,14 @@ export class ProductsServiceService {
     this.http.delete( backendUrl + deleteSuffix + "/" + product.id ).subscribe();
   }
 
-  createProduct( product : Product ) : Observable<Product>
+  createProduct( product : Product ) : Observable<any>
   {
     //aaaand this too
-    return this.http.post<Product>( backendUrl + addSuffix , product );
+    let url = backendUrl+addSuffix + 
+    "?name=" + product.name + 
+    "&description=" + product.description + 
+    "&price=" + product.price;
+    return this.http.post<any>( url , product );
   }
 
 }
