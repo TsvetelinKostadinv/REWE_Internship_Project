@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ProductsServiceService } from './services/products/products-service.service';
 import { Product } from '../models/Product';
-import { ChangeDetectorRef } from "@angular/core";
 
 //this is a record object for holding the states in the view
 export class DisplayableProduct
@@ -26,15 +25,13 @@ export class AppComponent {
 
   allProducts: Product[];
   
-  constructor( private productsService : ProductsServiceService , private ref: ChangeDetectorRef) 
+  constructor( private productsService : ProductsServiceService) 
   {
     productsService.getAllProducts().subscribe( x => 
       {
         this.allProducts = x;
         this.productsOnScreen = this.allProducts.map( x => new DisplayableProduct(x));
       });
-
-      // this.productsOnScreen = this.allProducts.map( x => new DisplayableProduct(x));
 
   }
 
@@ -58,8 +55,6 @@ export class AppComponent {
   {
     console.log( "Updating: " + product.name);
 
-    // let index:number = this.productsOnScreen.findIndex( x => x.prod.id == product.id );
-
     for( let i=0 ;i < this.productsOnScreen.length;i++)
     {
       if( this.productsOnScreen[i].prod.id == product.id )
@@ -70,9 +65,6 @@ export class AppComponent {
         break;
       }
     }
-
-    // this.productsOnScreen[index].inEditingState = true;
-
     console.log( this.productsOnScreen );
 
   }
@@ -80,6 +72,21 @@ export class AppComponent {
   onViewClick( product: Product )
   {
     console.log( "Viewing: " + product.name);
+  }
+
+  onUpdateProduct( newProd: Product)
+  {
+
+    for( let i=0;i<this.productsOnScreen.length;i++)
+    {
+      if( this.productsOnScreen[i].prod.id == newProd.id )
+      {
+        this.productsOnScreen[i] = new DisplayableProduct(newProd);
+        break;
+      }
+    }
+
+    this.productsService.updateProduct( newProd ).subscribe();
   }
 
 }

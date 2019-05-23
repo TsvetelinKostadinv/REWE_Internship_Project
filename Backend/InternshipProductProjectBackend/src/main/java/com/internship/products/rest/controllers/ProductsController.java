@@ -81,12 +81,17 @@ public class ProductsController
         prodRepo.deleteById( id );
     }
     
-    @PostMapping( path = "/update" )
+    @PostMapping( path = "/update/{id}" )
     @ResponseBody
-    public void update( @RequestParam ProductEntity prod )
+    public void update( @PathVariable long id,
+            @RequestParam String name ,
+            @RequestParam String description ,
+            @RequestParam double price)
     {
-        log.info( "Saving new: " + prod );
-        prodRepo.save( prod );
+        ProductEntity entity = new ProductEntity( name , description , price );
+        log.info( "Updating: " + entity );
+        entity.setId( id );
+        prodRepo.save( entity );
     }
     
 

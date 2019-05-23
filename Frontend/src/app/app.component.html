@@ -14,7 +14,8 @@
 
     <ng-container *ngIf="prod.inEditingState" >
       <app-product-editor align="center"
-        [prod] = allProducts[0] >
+        [prod] = prod.prod
+        (productEmitter) = "onUpdateProduct($event)" >
       </app-product-editor>
     </ng-container>
 

@@ -25,7 +25,8 @@ export class ProductsServiceService {
 
   updateProduct( product : Product ) : Observable<any>
   {
-    return this.http.post(backendUrl+updateSuffix , product);
+    let url = backendUrl+updateSuffix + "/" + product.id + "?name=" + product.name + "&description=" + product.description + "&price=" + product.price;
+    return this.http.post(url, product);
   }
 
   deleteProduct( product : Product )

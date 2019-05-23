@@ -1,8 +1,9 @@
 <div>
   <p>Name:</p>
-  <input type="text" value= {{prod.name}} >
+  <input name = "name" type="text" value= {{prod.name}} (input)="changedName($event.target.value)">
   <p>Description:</p>
-  <input type="test" value= {{prod.description}} >
+  <textarea name = "desc" rows="5" cols="60" (input)="changedDescription($event.target.value)" >{{prod.description}}</textarea>
   <p>Price:</p>
-  <input type="number" value={{prod.price}}>
+  <input name = "price" type="number" value={{prod.price}} (input)="changedPrice($event.target.value)">
+  <button (click)="onSubmit($event)" class="save">Save</button>
 </div>
