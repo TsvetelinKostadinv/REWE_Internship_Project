@@ -19,6 +19,12 @@
       </app-product-editor>
     </ng-container>
 
+    <ng-container *ngIf="prod.inViewingState" >
+        <app-product-view align="center"
+          [prod] = prod.prod >
+        </app-product-view>
+      </ng-container>
+
   </div>
 
 </div>

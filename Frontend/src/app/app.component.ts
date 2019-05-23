@@ -65,13 +65,25 @@ export class AppComponent {
         break;
       }
     }
-    console.log( this.productsOnScreen );
 
   }
 
   onViewClick( product: Product )
   {
     console.log( "Viewing: " + product.name);
+
+    // this is the pnly way I can force the view to re-render
+
+    for( let i=0 ;i < this.productsOnScreen.length;i++)
+    {
+      if( this.productsOnScreen[i].prod.id == product.id )
+      {
+        let newDisplayProd = new DisplayableProduct(product);
+        newDisplayProd.inViewingState = true;
+        this.productsOnScreen[i] = newDisplayProd;
+        break;
+      }
+    }
   }
 
   onUpdateProduct( newProd: Product)

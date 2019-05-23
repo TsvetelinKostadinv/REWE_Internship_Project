@@ -25,6 +25,9 @@ export class ProductsServiceService {
 
   updateProduct( product : Product ) : Observable<any>
   {
+    // I AM VERY VERY VERY SORRY FOR THIS, BUT I am new to frontend applications,
+    //  I know that this should not be done like this
+    //  ( it should be in the request body, but I could not get it working so hacked the solution)
     let url = backendUrl+updateSuffix + "/" + product.id + "?name=" + product.name + "&description=" + product.description + "&price=" + product.price;
     return this.http.post(url, product);
   }
@@ -36,6 +39,7 @@ export class ProductsServiceService {
 
   createProduct( product : Product ) : Observable<Product>
   {
+    //aaaand this too
     return this.http.post<Product>( backendUrl + addSuffix , product );
   }
 

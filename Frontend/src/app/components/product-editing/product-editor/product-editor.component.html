@@ -4,6 +4,6 @@
   <p>Description:</p>
   <textarea name = "desc" rows="5" cols="60" (input)="changedDescription($event.target.value)" >{{prod.description}}</textarea>
   <p>Price:</p>
-  <input name = "price" type="number" value={{prod.price}} (input)="changedPrice($event.target.value)">
+  <input name = "price" type="number" step="0.01" value={{prod.price}} (input)="changedPrice($event.target.value)">
   <button (click)="onSubmit($event)" class="save">Save</button>
 </div>
