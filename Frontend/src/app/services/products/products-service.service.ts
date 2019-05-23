@@ -30,7 +30,6 @@ export class ProductsServiceService {
 
   deleteProduct( product : Product )
   {
-    console.log("Deleting...")
     this.http.delete( backendUrl + deleteSuffix + "/" + product.id ).subscribe();
   }
 
