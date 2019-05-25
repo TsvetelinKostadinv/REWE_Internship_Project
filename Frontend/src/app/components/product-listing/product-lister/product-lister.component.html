@@ -3,9 +3,9 @@
 
   <div class="product-info" *ngFor="let prod of productsOnScreen">
 
-    {{prod.prod.name}}
+    <span>{{prod.prod.name}}</span>
 
-    <div class="buttons" align = "end">
+    <div align = "end">
         <button (click)="onDeleteClick(prod.prod)" class="delete" > Delete </button>
         <button (click)="onViewClick(prod.prod)" class="view" > View </button>
         <button (click)="onUpdateClick(prod.prod)" class="update" > Update </button>

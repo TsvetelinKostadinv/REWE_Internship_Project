@@ -41,7 +41,7 @@ export class ProductAdderComponent implements OnInit {
     prod.description = this.desc;
     prod.price = this.price;
     console.log("Creating");
-    this.productService.createProduct( prod ).subscribe;
+    this.productService.createProduct( prod ).subscribe();
   }
 
 }

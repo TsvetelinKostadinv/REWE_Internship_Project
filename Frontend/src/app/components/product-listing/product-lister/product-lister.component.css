@@ -1,0 +1,33 @@
+button
+{
+    margin-right: 5%;
+    width: 15%;
+    height: 5%;
+    background-color: black;
+    color: whitesmoke;
+    font-size: 400%;
+    
+    text-decoration: none;
+    border: none;
+    border-radius: 50px;
+    
+}
+
+button:hover
+{
+    background-color: whitesmoke;
+    color: black;
+}
+
+span 
+{
+    padding-left: 5%;
+    font-size: 400%; 
+    color: whitesmoke;
+}
+
+.product-info
+{
+    background-color: black;
+    break-after: always;
+}

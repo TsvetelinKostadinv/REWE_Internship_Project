@@ -2,8 +2,10 @@
   <p> Name: </p>
   <input name="name" placeholder="Name" (input)="onNameChange($event.target.value)" >
   <p> Description: </p>
-  <textarea name="description" cols="80" rows="5" placeholder="Description of the product" (input)="onDescriptionChange($event.target.value)"></textarea>
+  <textarea name="description" cols="40" rows="5" placeholder="Description of the product" (input)="onDescriptionChange($event.target.value)"></textarea>
   <p> Price: </p>
   <input name="price" type="number" step="0.01" (input)="onPriceChange($event.target.value)">
+  <br>
+  <br>
   <button (click)="addProduct($event)" > Add </button>
 </div>
