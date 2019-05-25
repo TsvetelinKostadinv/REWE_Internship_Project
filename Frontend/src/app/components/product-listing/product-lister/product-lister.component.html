@@ -1,0 +1,29 @@
+
+  <input type="text" (input)="onSearchChange($event.target.value)" placeholder="Find name(case insensitive)">
+
+  <div class="product-info" *ngFor="let prod of productsOnScreen">
+
+    <span>{{prod.prod.name}}</span>
+
+    <div align = "end">
+        <button (click)="onDeleteClick(prod.prod)" class="delete" > Delete </button>
+        <button (click)="onViewClick(prod.prod)" class="view" > View </button>
+        <button (click)="onUpdateClick(prod.prod)" class="update" > Update </button>
+    </div>
+
+    <ng-container *ngIf="prod.inEditingState" >
+      <app-product-editor align="center"
+        [prod] = prod.prod
+        (productEmitter) = "onUpdateProduct($event)" >
+      </app-product-editor>
+    </ng-container>
+
+    <ng-container *ngIf="prod.inViewingState" >
+        <app-product-view align="center"
+          [prod] = prod.prod >
+        </app-product-view>
+      </ng-container>
+      
+      <hr>
+
+  </div>

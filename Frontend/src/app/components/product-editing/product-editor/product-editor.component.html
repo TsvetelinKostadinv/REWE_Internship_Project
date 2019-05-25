@@ -1,0 +1,10 @@
+<div>
+  <p>Name:</p>
+  <input name = "name" type="text" value= {{prod.name}} (input)="changedName($event.target.value)">
+  <p>Description:</p>
+  <textarea name = "desc" rows="5" cols="60" (input)="changedDescription($event.target.value)" >{{prod.description}}</textarea>
+  <p>Price:</p>
+  <input name = "price" type="number" step="0.01" value={{prod.price}} (input)="changedPrice($event.target.value)">
+  <br>
+  <button (click)="onSubmit($event)" class="save">Save</button>
+</div>
